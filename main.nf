@@ -14,6 +14,7 @@ process getVersions {
     label "singlecell"
     cpus 1
     memory "1 GB"
+    time "01:00:00"
     output:
         path "versions.txt"
     script:
@@ -39,6 +40,7 @@ process getParams {
     label "singlecell"
     cpus 1
     memory "1 GB"
+    time "01:00:00"
     output:
         path "params.json"
     script:
@@ -54,6 +56,7 @@ process makeReport {
     label "wf_common"
     cpus 1
     memory "32 GB"
+    time "01:00:00"
     publishDir "${params.out_dir}", mode: 'copy', pattern: "wf-single-cell-report.html"
     input:
         val metadata
@@ -98,6 +101,7 @@ process parse_kit_metadata {
     label "singlecell"
     cpus 1
     memory "1 GB"
+    time "01:00:00"
     input:
         path 'sample_ids'
         path sc_sample_sheet
@@ -130,6 +134,7 @@ process prepare_report_data {
     label "singlecell"
     cpus 1
     memory "1 GB"
+    time "01:00:00"
     input:
         tuple val(meta),
               path('adapter_stats/stats*.json'),
